@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import UserList from "./Contact"; // Import UserList
 
-export default function Add() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+export default function Add({ addUser, users }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleAdd = () => {
-    console.log('Name:', name);
-    console.log('Email:', email);
-    // Add your logic here
+    if (name && email) {
+      addUser({ name, email });
+      setName("");
+      setEmail("");
+    }
   };
 
   return (
@@ -33,6 +36,8 @@ export default function Add() {
         </label>
       </div>
       <button onClick={handleAdd}>Add</button>
+
+ 
     </div>
   );
 }
